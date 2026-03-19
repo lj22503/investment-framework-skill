@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要设计投资组合时；当用户�
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 高级
+skill_type: 通用🟡
 related_skills: [asset-allocator, global-allocator, cycle-locator, decision-checklist]
 tags: [投资组合，耶鲁模式，史文森，机构配置]
 ---

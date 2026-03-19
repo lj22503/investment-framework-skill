@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要评估企业竞争优势时；当�
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 核心
+skill_type: 核心🔴
 related_skills: [value-analyzer, intrinsic-value-calculator, decision-checklist, industry-analyst]
 tags: [护城河，竞争优势，价值投资，巴菲特]
 ---
