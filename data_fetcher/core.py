@@ -151,8 +151,16 @@ class DataFetcher:
         self.timeout = self.config['fallback']['timeout']
         
         # 数据源优先级
-        self.quote_providers = ['tencent', 'sina', 'eastmoney']
-        self.financials_providers = ['eastmoney']
+        # Tushare 需要 API Key，如果配置了则优先使用
+        api_keys = self.config.get('api_keys', {})
+        tushare_enabled = api_keys.get('tushare', {}).get('enabled', False) and api_keys.get('tushare', {}).get('token', '')
+        
+        if tushare_enabled:
+            self.quote_providers = ['tushare', 'tencent', 'sina', 'eastmoney']
+            self.financials_providers = ['tushare', 'eastmoney']
+        else:
+            self.quote_providers = ['tencent', 'sina', 'eastmoney']
+            self.financials_providers = ['eastmoney']
     
     def get_quote(self, symbol: str, use_cache: bool = True) -> Quote:
         """
@@ -176,12 +184,19 @@ class DataFetcher:
         # 延迟导入提供者
         tencent, sina, eastmoney = _import_providers()
         
+        # 检查是否启用 Tushare
+        api_keys = self.config.get('api_keys', {})
+        tushare_enabled = api_keys.get('tushare', {}).get('enabled', False) and api_keys.get('tushare', {}).get('token', '')
+        
         # 按优先级尝试数据源
         last_error = None
         
         for provider in self.quote_providers:
             try:
-                if provider == 'tencent':
+                if provider == 'tushare' and tushare_enabled:
+                    from .providers.tushare import fetch_tushare_quote
+                    quote = fetch_tushare_quote(symbol, self.timeout, self.config)
+                elif provider == 'tencent':
                     quote = tencent.fetch_tencent_quote(symbol, self.timeout)
                 elif provider == 'sina':
                     quote = sina.fetch_sina_quote(symbol, self.timeout)
@@ -227,12 +242,19 @@ class DataFetcher:
         # 延迟导入提供者
         tencent, sina, eastmoney = _import_providers()
         
+        # 检查是否启用 Tushare
+        api_keys = self.config.get('api_keys', {})
+        tushare_enabled = api_keys.get('tushare', {}).get('enabled', False) and api_keys.get('tushare', {}).get('token', '')
+        
         # 尝试数据源
         last_error = None
         
         for provider in self.financials_providers:
             try:
-                if provider == 'eastmoney':
+                if provider == 'tushare' and tushare_enabled:
+                    from .providers.tushare import fetch_tushare_financials
+                    financials = fetch_tushare_financials(symbol, self.timeout, self.config)
+                elif provider == 'eastmoney':
                     financials = eastmoney.fetch_eastmoney_financials(symbol, self.timeout)
                 else:
                     continue
