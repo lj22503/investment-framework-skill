@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要选股时；当用户问"这家公
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 高级
+skill_type: 通用🟡
 related_skills: [value-analyzer, moat-evaluator, industry-analyst, decision-checklist]
 tags: [选股，彼得林奇，PEG 估值，生活选股法]
 ---

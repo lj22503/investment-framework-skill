@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要分析股票是否符合格雷厄�
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 核心
+skill_type: 核心🔴
 related_skills: [moat-evaluator, intrinsic-value-calculator, decision-checklist, stock-picker]
 tags: [价值分析，格雷厄姆，安全边际，防御型投资]
 ---

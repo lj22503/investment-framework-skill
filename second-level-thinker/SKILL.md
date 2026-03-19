@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要深入思考时；当用户问"市
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 认知工具
+skill_type: 通用🟡
 related_skills: [bias-detector, decision-checklist, cycle-locator, stock-picker]
 tags: [第二层思维，逆向投资，霍华德马克斯，市场周期]
 ---

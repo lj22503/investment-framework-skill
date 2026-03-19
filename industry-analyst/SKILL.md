@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要快速了解一个行业时；当�
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 高级
+skill_type: 通用🟡
 related_skills: [stock-picker, moat-evaluator, value-analyzer, cycle-locator]
 tags: [行业分析，生命周期，竞争格局，投资价值]
 ---

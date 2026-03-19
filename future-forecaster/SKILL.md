@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要预测行业趋势时；当用户�
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 高级
+skill_type: 通用🟡
 related_skills: [industry-analyst, cycle-locator, stock-picker, asset-allocator]
 tags: [未来预测，长期趋势，凯文凯利，KK, 技术趋势]
 ---

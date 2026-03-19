@@ -5,7 +5,7 @@ description: ［何时使用］当用户需要判断经济周期位置时；当�
 author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
-skill_type: 高级
+skill_type: 通用🟡
 related_skills: [asset-allocator, industry-analyst, future-forecaster, portfolio-designer]
 tags: [经济周期，债务周期，达利欧，资产配置]
 ---
