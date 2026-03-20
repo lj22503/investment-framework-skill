@@ -23,16 +23,21 @@ def main():
     config = load_config()
     token = config['api_keys']['tushare']['token']
     
-    # 检查权限
+    # 检查权限（直接测试日线行情）
     print("\n1️⃣  检查 Token 有效性...")
-    result = check_tushare_permissions(token)
-    
-    if result['valid']:
-        print(f"✅ Token 有效")
-        print(f"   {result['message']}")
-    else:
+    try:
+        import tushare as ts
+        ts.set_token(token)
+        pro = ts.pro_api()
+        df = pro.daily(ts_code='000001.SZ', start_date='20260319', end_date='20260319')
+        if df is not None and len(df) > 0:
+            print(f"✅ Token 有效（日线行情可用）")
+            print(f"   测试数据：平安银行 {df.iloc[0]['close']}元")
+        else:
+            print(f"⚠️  Token 有效但无数据返回")
+    except Exception as e:
         print(f"❌ Token 无效或积分不足")
-        print(f"   {result['message']}")
+        print(f"   {e}")
         print(f"\n💡 提示：")
         print(f"   1. 访问 https://tushare.pro/user/token 获取 token")
         print(f"   2. 注册送 100 积分，可使用基础接口")

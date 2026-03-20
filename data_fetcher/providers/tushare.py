@@ -125,15 +125,19 @@ def fetch_tushare_quote(symbol: str, timeout: int = 5, config: dict = None) -> Q
         
         row = df.iloc[0]
         
-        # 获取基本面数据
+        # 获取基本面数据（需要 300+ 积分）
         pe, pb, market_cap = 0.0, 0.0, 0.0
         try:
             basic = pro.stock_basic(ts_code=ts_code, fields='ts_code,name,pe,pb,total_mv')
             if basic is not None and len(basic) > 0:
-                pe = float(basic.iloc[0]['pe']) if 'pe' in basic.columns and basic.iloc[0]['pe'] else 0.0
-                pb = float(basic.iloc[0]['pb']) if 'pb' in basic.columns and basic.iloc[0]['pb'] else 0.0
-                market_cap = float(basic.iloc[0]['total_mv']) if 'total_mv' in basic.columns and basic.iloc[0]['total_mv'] else 0.0
+                pe_val = basic.iloc[0].get('pe', None)
+                pb_val = basic.iloc[0].get('pb', None)
+                mv_val = basic.iloc[0].get('total_mv', None)
+                pe = float(pe_val) if pe_val else 0.0
+                pb = float(pb_val) if pb_val else 0.0
+                market_cap = float(mv_val) if mv_val else 0.0
         except Exception:
+            # 积分不足时返回 0，会降级到其他数据源
             pass
         
         return Quote(
