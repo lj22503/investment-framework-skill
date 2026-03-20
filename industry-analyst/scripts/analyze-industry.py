@@ -3,10 +3,13 @@
 行业分析师 - 数据获取脚本
 
 基于肖璟《如何快速了解一个行业》分析行业生命周期、竞争格局、投资价值
+集成 searxng 搜索获取行业数据
 """
 
 import sys
 import os
+import subprocess
+import json
 
 # 添加投资框架目录到路径
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -14,6 +17,60 @@ framework_dir = os.path.dirname(script_dir)
 sys.path.insert(0, framework_dir)
 
 from datetime import datetime
+
+
+def search_industry_data(industry_name: str) -> dict:
+    """
+    使用 searxng 搜索行业数据
+    
+    Args:
+        industry_name: 行业名称
+    
+    Returns:
+        搜索到的数据字典
+    """
+    result = {
+        'growth_rate': None,
+        'market_size': None,
+        'companies': [],
+        'sources': [],
+    }
+    
+    try:
+        # 搜索行业增长率
+        search_query = f"{industry_name} 行业增长率 2024 2025"
+        env = os.environ.copy()
+        env['SEARXNG_URL'] = 'http://localhost:8080'
+        
+        cmd = [
+            'uv', 'run',
+            f'{framework_dir}/../skills/searxng/scripts/searxng.py',
+            'search', search_query,
+            '-n', '5',
+            '--format', 'json'
+        ]
+        
+        proc_result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+        
+        if proc_result.returncode == 0:
+            search_data = json.loads(proc_result.stdout)
+            if 'results' in search_data and len(search_data['results']) > 0:
+                result['sources'] = search_data['results'][:5]
+                
+                # 尝试从搜索结果中提取增长率（简化版，实际需要 NLP）
+                for r in search_data['results'][:3]:
+                    title = r.get('title', '')
+                    content = r.get('content', '')
+                    
+                    # 简单关键词匹配
+                    if '增长' in title or '增长' in content:
+                        result['market_size'] = title[:100]
+                        break
+    except Exception as e:
+        result['error'] = str(e)
+        result['sources'] = []
+    
+    return result
 
 
 def analyze_lifecycle(industry_name: str, growth_rate: float = None, market_size: str = None) -> dict:
@@ -186,7 +243,7 @@ def analyze_investment_value(industry_name: str, lifecycle: dict, competition: d
     return result
 
 
-def analyze_industry(industry_name: str, growth_rate: float = None, companies: list = None) -> dict:
+def analyze_industry(industry_name: str, growth_rate: float = None, companies: list = None, use_search: bool = True) -> dict:
     """
     行业完整分析
     
@@ -194,6 +251,7 @@ def analyze_industry(industry_name: str, growth_rate: float = None, companies: l
         industry_name: 行业名称
         growth_rate: 行业增长率（%）
         companies: 公司列表
+        use_search: 是否使用 searxng 搜索
     
     Returns:
         分析结果字典
@@ -203,6 +261,14 @@ def analyze_industry(industry_name: str, growth_rate: float = None, companies: l
         'timestamp': datetime.now().isoformat(),
         'data_sources': [],
     }
+    
+    # 使用 searxng 搜索获取数据
+    if use_search and growth_rate is None:
+        search_data = search_industry_data(industry_name)
+        if search_data.get('sources'):
+            result['data_sources'].append(f"searxng: {len(search_data['sources'])} 条结果")
+            if search_data.get('market_size'):
+                result['search_summary'] = search_data['market_size']
     
     # 生命周期分析
     result['lifecycle'] = analyze_lifecycle(industry_name, growth_rate)
@@ -275,17 +341,29 @@ def print_analysis(result: dict) -> None:
 def main():
     """主函数"""
     if len(sys.argv) < 2:
-        print("用法：python3 analyze-industry.py <行业名称> [增长率%]")
+        print("用法：python3 analyze-industry.py <行业名称> [增长率%] [--search]")
         print("示例：python3 analyze-industry.py 新能源汽车 35")
+        print("       python3 analyze-industry.py 人工智能 --search")
         return 1
     
     industry_name = sys.argv[1]
-    growth_rate = float(sys.argv[2]) if len(sys.argv) > 2 else None
+    growth_rate = None
+    use_search = '--search' in sys.argv
+    
+    if len(sys.argv) > 2 and sys.argv[2] != '--search':
+        try:
+            growth_rate = float(sys.argv[2])
+        except ValueError:
+            pass
     
     # 示例公司数据（实际应从搜索或数据库获取）
     companies = []
     
-    result = analyze_industry(industry_name, growth_rate, companies)
+    print(f"🔍 分析行业：{industry_name}")
+    if use_search:
+        print(f"📡 使用 searxng 搜索行业数据...")
+    
+    result = analyze_industry(industry_name, growth_rate, companies, use_search)
     print_analysis(result)
     
     return 0

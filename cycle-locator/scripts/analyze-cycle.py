@@ -3,10 +3,13 @@
 周期定位师 - 数据获取脚本
 
 基于达利欧《经济机器是怎样运行的》判断经济周期位置
+集成 searxng 搜索获取宏观经济数据
 """
 
 import sys
 import os
+import subprocess
+import json
 
 # 添加投资框架目录到路径
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -14,6 +17,49 @@ framework_dir = os.path.dirname(script_dir)
 sys.path.insert(0, framework_dir)
 
 from datetime import datetime
+
+
+def search_macro_data(country: str = '中国') -> dict:
+    """
+    使用 searxng 搜索宏观经济数据
+    
+    Args:
+        country: 国家名称
+    
+    Returns:
+        搜索到的数据字典
+    """
+    result = {
+        'gdp_growth': None,
+        'interest_rate': None,
+        'debt_to_gdp': None,
+        'sources': [],
+    }
+    
+    try:
+        # 搜索 GDP 增长率
+        search_query = f"{country} GDP 增长率 2024 2025"
+        env = os.environ.copy()
+        env['SEARXNG_URL'] = 'http://localhost:8080'
+        
+        cmd = [
+            'uv', 'run',
+            f'{framework_dir}/../skills/searxng/scripts/searxng.py',
+            'search', search_query,
+            '-n', '3',
+            '--format', 'json'
+        ]
+        
+        proc_result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+        
+        if proc_result.returncode == 0:
+            search_data = json.loads(proc_result.stdout)
+            if 'results' in search_data:
+                result['sources'].extend(search_data['results'][:3])
+    except Exception as e:
+        result['error'] = str(e)
+    
+    return result
 
 
 def analyze_short_term_debt_cycle(indicators: dict) -> dict:
@@ -178,7 +224,8 @@ def asset_allocation_recommendation(short_cycle: str, long_cycle: str) -> dict:
 
 
 def analyze_cycle(gdp_growth: float = None, interest_rate: float = None, 
-                  debt_to_gdp: float = None, credit_condition: str = None) -> dict:
+                  debt_to_gdp: float = None, credit_condition: str = None,
+                  use_search: bool = False, country: str = '中国') -> dict:
     """
     经济周期完整分析
     
@@ -187,6 +234,8 @@ def analyze_cycle(gdp_growth: float = None, interest_rate: float = None,
         interest_rate: 利率水平（%）
         debt_to_gdp: 债务/GDP 比率（%）
         credit_condition: 信贷条件（宽松/正常/紧缩）
+        use_search: 是否使用 searxng 搜索
+        country: 国家名称
     
     Returns:
         分析结果字典
@@ -195,6 +244,12 @@ def analyze_cycle(gdp_growth: float = None, interest_rate: float = None,
         'timestamp': datetime.now().isoformat(),
         'data_sources': [],
     }
+    
+    # 使用 searxng 搜索获取宏观数据
+    if use_search:
+        search_data = search_macro_data(country)
+        if search_data.get('sources'):
+            result['data_sources'].append(f"searxng: {len(search_data['sources'])} 条结果")
     
     # 准备指标
     indicators = {
@@ -271,6 +326,9 @@ def print_analysis(result: dict) -> None:
 
 def main():
     """主函数"""
+    use_search = '--search' in sys.argv
+    country = '中国'
+    
     # 检查是否使用默认数据
     if len(sys.argv) >= 2 and sys.argv[1] == 'default':
         # 使用默认数据（中国 2024 年近似值）
@@ -278,11 +336,21 @@ def main():
         interest_rate = 2.5
         debt_to_gdp = 280
         credit_condition = '正常'
+    elif len(sys.argv) >= 2 and sys.argv[1] == '--search':
+        # 使用搜索获取数据
+        gdp_growth = None
+        interest_rate = None
+        debt_to_gdp = None
+        credit_condition = '正常'
+        if len(sys.argv) > 2:
+            country = sys.argv[2]
     elif len(sys.argv) < 5:
         print("用法：python3 analyze-cycle.py <GDP 增长率%> <利率%> <债务/GDP%> <信贷条件>")
         print("示例：python3 analyze-cycle.py 5.2 2.5 280 正常")
         print("\n或使用默认数据：")
         print("python3 analyze-cycle.py default")
+        print("\n或使用 searxng 搜索：")
+        print("python3 analyze-cycle.py --search [国家]")
         return 1
     else:
         gdp_growth = float(sys.argv[1])
@@ -302,7 +370,10 @@ def main():
         debt_to_gdp = float(sys.argv[3])
         credit_condition = sys.argv[4]
     
-    result = analyze_cycle(gdp_growth, interest_rate, debt_to_gdp, credit_condition)
+    if use_search:
+        print(f"🔍 搜索 {country} 宏观经济数据...")
+    
+    result = analyze_cycle(gdp_growth, interest_rate, debt_to_gdp, credit_condition, use_search, country)
     print_analysis(result)
     
     return 0
