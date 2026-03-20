@@ -7,8 +7,9 @@
 set -e
 
 # 配置
-SKILL_DIR="/tmp/investment-framework-skill"
-LOG_FILE="/tmp/investment-framework-skill/publish.log"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SKILL_DIR="$(dirname "$SCRIPT_DIR")"
+LOG_FILE="$SCRIPT_DIR/publish.log"
 TOKEN="clh__9gP_tSKR3d9q2c5WzRwN1UJLeKnaOo7YbA3b7nD_W8"
 
 # 日志函数
@@ -19,9 +20,18 @@ log() {
 # 检查登录状态
 check_login() {
     log "检查 ClawHub 登录状态..."
-    if ! clawhub publish --help > /dev/null 2>&1; then
+    if ! command -v clawhub > /dev/null 2>&1; then
         log "错误：ClawHub CLI 未安装"
         exit 1
+    fi
+    
+    # 测试登录（通过检查 token 配置）
+    if ! clawhub config get token > /dev/null 2>&1; then
+        log "警告：ClawHub 未登录，尝试自动登录..."
+        export CLAWHUB_TOKEN="$TOKEN"
+        log "✅ 已设置 token"
+    else
+        log "✅ ClawHub 已登录"
     fi
 }
 
