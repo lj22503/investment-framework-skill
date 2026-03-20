@@ -6,6 +6,7 @@ author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
 skill_type: 通用🟡
+allowed-tools: [Bash, Read, Exec]
 related_skills: [value-analyzer, moat-evaluator, industry-analyst, decision-checklist]
 tags: [选股，彼得林奇，PEG 估值，生活选股法]
 ---
@@ -357,3 +358,15 @@ PEG = 30 / 15 = 2.0
 ---
 
 *投资你理解的，理解你投资的。好公司 + 好价格=好投资。* 🎯
+---
+
+## 🔧 故障排查
+
+| 问题 | 检查项 | 解决方案 |
+|------|--------|---------|
+| 不触发 | description 是否包含触发词？ | 将关键词加入 description |
+| 运行失败 | 脚本有执行权限吗？ | `chmod +x scripts/*.py` |
+| 数据获取失败 | 网络连接正常吗？ | 检查网络或 API 状态 |
+| 数据不足 | Tushare 积分足够吗？ | 签到获取更多积分或使用免费数据源 |
+| 输出异常 | 输入格式正确吗？ | 检查股票代码格式（如 600519.SH） |
+

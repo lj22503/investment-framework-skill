@@ -6,6 +6,7 @@ author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
 skill_type: 通用
+allowed-tools: [Read]
 related_skills: [li-lu-investor, future-forecaster, industry-analyst]
 tags: [李录，中国机会，现代化，核心资产]
 ---
@@ -149,3 +150,15 @@ tags: [李录，中国机会，现代化，核心资产]
 ---
 
 *中国现代化是人类历史上最大规模的现代化进程。投资中国核心资产。* 🇨🇳
+---
+
+## 🔧 故障排查
+
+| 问题 | 检查项 | 解决方案 |
+|------|--------|---------|
+| 不触发 | description 是否包含触发词？ | 将关键词加入 description |
+| 运行失败 | 脚本有执行权限吗？ | `chmod +x scripts/*.py` |
+| 数据获取失败 | 网络连接正常吗？ | 检查网络或 API 状态 |
+| 数据不足 | Tushare 积分足够吗？ | 签到获取更多积分或使用免费数据源 |
+| 输出异常 | 输入格式正确吗？ | 检查股票代码格式（如 600519.SH） |
+

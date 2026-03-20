@@ -6,6 +6,7 @@ author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
 skill_type: 核心🔴
+allowed-tools: [Bash, Read, Exec]
 related_skills: [moat-evaluator, intrinsic-value-calculator, decision-checklist, stock-picker]
 tags: [价值分析，格雷厄姆，安全边际，防御型投资]
 ---
@@ -322,3 +323,15 @@ tags: [价值分析，格雷厄姆，安全边际，防御型投资]
 ---
 
 *用 4 毛钱买 1 块钱的东西。没有安全边际，不买入。* 📊
+---
+
+## 🔧 故障排查
+
+| 问题 | 检查项 | 解决方案 |
+|------|--------|---------|
+| 不触发 | description 是否包含触发词？ | 将关键词加入 description |
+| 运行失败 | 脚本有执行权限吗？ | `chmod +x scripts/*.py` |
+| 数据获取失败 | 网络连接正常吗？ | 检查网络或 API 状态 |
+| 数据不足 | Tushare 积分足够吗？ | 签到获取更多积分或使用免费数据源 |
+| 输出异常 | 输入格式正确吗？ | 检查股票代码格式（如 600519.SH） |
+

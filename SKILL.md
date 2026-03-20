@@ -6,6 +6,7 @@ author: 燃冰 + 小蚂蚁
 created: 2026-03-13
 updated: 2026-03-19
 skill_type: 核心
+allowed-tools: [Read]
 related_skills: [value-analyzer, moat-evaluator, asset-allocator, decision-checklist, intrinsic-value-calculator, future-forecaster]
 tags: [投资框架，价值投资，资产配置，决策清单]
 ---
@@ -255,3 +256,15 @@ tags: [投资框架，价值投资，资产配置，决策清单]
 ---
 
 *投资很简单，但不容易。简单的是原则，不容易的是执行。* 📚
+---
+
+## 🔧 故障排查
+
+| 问题 | 检查项 | 解决方案 |
+|------|--------|---------|
+| 不触发 | description 是否包含触发词？ | 将关键词加入 description |
+| 运行失败 | 脚本有执行权限吗？ | `chmod +x scripts/*.py` |
+| 数据获取失败 | 网络连接正常吗？ | 检查网络或 API 状态 |
+| 数据不足 | Tushare 积分足够吗？ | 签到获取更多积分或使用免费数据源 |
+| 输出异常 | 输入格式正确吗？ | 检查股票代码格式（如 600519.SH） |
+
