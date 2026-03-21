@@ -8,6 +8,14 @@
 
 ---
 
+## 🚀 快速开始
+
+**新手必读**：[QUICKSTART.md](QUICKSTART.md)（5 分钟上手）
+
+**详细指南**：[USAGE.md](USAGE.md)（完整使用手册）
+
+---
+
 ## 📚 理论来源
 
 基于 5 本投资经典：
@@ -312,11 +320,33 @@ cd ~/.openclaw/workspace/skills/investment-framework/
 
 ---
 
+## 📁 文件结构
+
+```
+investment-framework-skill/
+├── QUICKSTART.md          ← 【入口】5 分钟快速入门
+├── README.md              ← 项目介绍（你在这里）
+├── USAGE.md               ← 详细使用指南
+│
+├── value-analyzer/        ← 价值分析师
+├── moat-evaluator/        ← 护城河评估师
+├── intrinsic-value-calculator/
+├── decision-checklist/
+├── asset-allocator/
+│
+├── docs/                  ← 理论文档（可选读）
+├── scripts/               ← 工具脚本
+└── config/                ← 配置文件
+```
+
+---
+
 ## 📞 支持
 
 - **问题反馈**：GitHub Issues
-- **理论详解**：[THEORY.md](THEORY.md)
+- **理论详解**：[docs/THEORY.md](docs/THEORY.md)
 - **使用指南**：[USAGE.md](USAGE.md)
+- **快速入门**：[QUICKSTART.md](QUICKSTART.md)
 
 ---
 
