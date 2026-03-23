@@ -53,12 +53,23 @@ def get_tencent_quote(symbol):
             if len(fields) < 12:
                 continue
             
+            # 修复涨跌幅解析（腾讯格式：字段 4=涨跌额，字段 5=涨跌幅%，但可能是百分比格式）
+            price = float(fields[3]) if fields[3] else 0.0
+            prev_close = float(fields[11]) if fields[11] else 0.0
+            change = float(fields[4]) if fields[4] else 0.0
+            
+            # 重新计算涨跌幅（避免解析错误）
+            if prev_close > 0:
+                change_percent = (change / prev_close) * 100
+            else:
+                change_percent = 0.0
+            
             return {
                 'symbol': symbol,
                 'name': fields[1],
-                'price': float(fields[3]) if fields[3] else 0.0,
-                'change': float(fields[4]) if fields[4] else 0.0,
-                'change_percent': float(fields[5]) if fields[5] else 0.0,
+                'price': price,
+                'change': change,
+                'change_percent': round(change_percent, 2),
                 'volume': int(float(fields[6])) if fields[6] else 0,
                 'turnover': float(fields[7]) if fields[7] else 0.0,
                 'high': float(fields[8]) if fields[8] else 0.0,
