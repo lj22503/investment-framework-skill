@@ -5,30 +5,39 @@ echo "=== 🔍 QVeris 使用情况检查 ==="
 echo ""
 
 # 检查宏观数据缓存
-MACRO_CACHE=~/.openclaw/workspace/data/macro/latest.json
+MACRO_CACHE=~/.openclaw/workspace/data/investment/macro-latest.json
 if [ -f "$MACRO_CACHE" ]; then
   MACRO_DATE=$(jq -r '.metadata.updated' "$MACRO_CACHE" 2>/dev/null || stat -c %y "$MACRO_CACHE" | cut -d' ' -f1)
   echo "✅ 宏观数据缓存：$MACRO_DATE"
 else
-  echo "❌ 宏观数据缓存：不存在"
+  echo "⚠️  宏观数据缓存：不存在（市场扫描时自动获取）"
 fi
 
 # 检查北向资金缓存
 TODAY=$(date +%Y-%m-%d)
-NORTHBOUND_CACHE=~/.openclaw/workspace/data/northbound/$TODAY.json
+NORTHBOUND_CACHE=~/.openclaw/workspace/data/investment/northbound-${TODAY}.json
 if [ -f "$NORTHBOUND_CACHE" ]; then
   echo "✅ 北向资金缓存：今日数据已获取"
 else
-  echo "⚠️  北向资金缓存：今日数据未获取"
+  echo "⚠️  北向资金缓存：今日数据未获取（09:00 自动获取）"
 fi
 
 # 检查行业资金流向缓存
 WEEK=$(date +%Y-W%W)
-INDUSTRY_CACHE=~/.openclaw/workspace/data/industry/$WEEK.json
+INDUSTRY_CACHE=~/.openclaw/workspace/data/investment/industry-flow-${WEEK}.json
 if [ -f "$INDUSTRY_CACHE" ]; then
   echo "✅ 行业资金流向缓存：本周数据已获取"
 else
-  echo "⚠️  行业资金流向缓存：本周数据未获取"
+  echo "⚠️  行业资金流向缓存：本周数据未获取（周一 10:00 自动获取）"
+fi
+
+# 检查实际数据文件（市场扫描生成）
+MARKET_DATA=~/.openclaw/workspace/data/investment/market-data.json
+if [ -f "$MARKET_DATA" ]; then
+  MARKET_TIME=$(stat -c %y "$MARKET_DATA" | cut -d' ' -f1-2 | sed 's/ / /')
+  echo "✅ 市场数据文件：$MARKET_TIME"
+else
+  echo "⚠️  市场数据文件：不存在（09:00 自动生成）"
 fi
 
 # 检查 QVeris API Key
