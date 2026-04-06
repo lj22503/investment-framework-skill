@@ -5,13 +5,15 @@
 """
 
 from .core import DataFetcher
+from .fund_fetcher import FundDataFetcher
 from .config import load_config, save_config, init_config
 from .cache import CacheManager
 from .exceptions import DataFetchError, ConfigError, APIKeyError
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 __all__ = [
     'DataFetcher',
+    'FundDataFetcher',
     'load_config',
     'save_config',
     'init_config',
