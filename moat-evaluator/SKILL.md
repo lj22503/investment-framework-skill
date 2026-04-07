@@ -1,16 +1,14 @@
 ---
 name: moat-evaluator
-version: 3.0.0
-description: ［何时使用］当用户需要评估企业竞争优势时；当用户问"这家公司有护城河吗"时；当进行价值投资分析时；当需要判断长期投资价值时；当检测到"护城河""竞争优势""好生意"等关键词时
+version: 4.0.0
 author: 燃冰 + 小蚂蚁
-created: 2026-03-13
-updated: 2026-04-06
-  - 新增：专利可持续性评估（《投资王道》框架）
-  - 新增：专利消失风险警示
+created: 2026-03-12
+updated: 2026-04-07
 skill_type: 核心🔴
-allowed-tools: [Bash, Read, Exec]
-related_skills: [value-analyzer, intrinsic-value-calculator, decision-checklist, industry-analyst, market-patent-evaluator]
-tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
+allowed-tools: [Bash, Read, Write, Exec, WebSearch]
+related_skills: [value-analyzer, intrinsic-value-calculator, market-patent-evaluator, risk-assessor]
+tags: [护城河，竞争优势，巴菲特，网络效应，品牌，转换成本]
+description: ［何时使用］当用户需要评估企业竞争优势时；当用户问"这家公司有护城河吗"时；当进行价值投资分析时；当需要判断长期投资价值时；当检测到"护城河""竞争优势""好生意"等关键词时
 ---
 
 # 护城河评估师 🏰
@@ -207,10 +205,22 @@ tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
 
 ## 🔗 相关资源
 
-- `references/moat-theory.md` - 护城河理论详解
-- `examples/tech-company.md` - 科技公司护城河分析示例
-- `examples/consumer-company.md` - 消费公司护城河分析示例
-- `templates/moat-analysis-template.md` - 护城河分析模板
+### 渐进式披露结构
+
+**核心文档**（本文件）：
+- moat-evaluator 技能详情
+
+**参考资料**（references/）：
+- `../references/buffett-moat.md` - 巴菲特护城河理论详解
+- `../references/competitive-advantage.md` - 竞争优势分析框架
+
+**示例集合**（examples/）：
+- `../examples/tech-company.md` - 科技公司护城河分析示例（腾讯/阿里）
+- `../examples/consumer-company.md` - 消费公司护城河分析示例（茅台/伊利）
+- `../examples/manufacturing-company.md` - 制造业公司护城河分析示例
+
+**模板文件**（templates/）：
+- `../templates/moat-analysis-template.md` - 护城河分析模板
 
 ---
 
@@ -320,7 +330,7 @@ tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
 
 | 护城河类型 | 是否存在 | 证据 | 强度 |
 |-----------|---------|------|------|
-| 品牌优势 | 是 | 腾讯品牌认知度高 | 4 |
+| 品牌优势 | 是 | 腾讯品牌认知度高，用户信任 | 4 |
 | 网络效应 | 是 | 微信 12 亿用户，网络效应极强 | 5 |
 | 转换成本 | 是 | 社交关系链锁定，转换成本高 | 5 |
 | 规模优势 | 是 | 规模带来成本和研发优势 | 4 |
@@ -335,6 +345,14 @@ tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
 
 护城河趋势：稳定
 
+关键指标：
+| 指标 | 当前 | 3 年前 | 趋势 |
+|------|------|--------|------|
+| 市场份额 | 80%+ | 75%+ | ↑ |
+| 毛利率 | 45% | 43% | ↑ |
+| ROE | 25% | 23% | ↑ |
+| 用户留存 | 90%+ | 88%+ | ↑ |
+
 【投资建议】
 
 建议：推荐
@@ -347,6 +365,7 @@ tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
 风险：
 - 监管风险（互联网行业）
 - 增长放缓风险
+- 建议：长期持有，关注监管变化
 ```
 
 ### 示例 2：贵州茅台护城河分析
@@ -392,6 +411,11 @@ tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
 2. 强定价权（持续提价能力）
 3. 稀缺产能（地理标志保护）
 4. 符合巴菲特护城河标准
+
+风险：
+- 政策风险（反腐、限酒）
+- 估值风险
+- 建议：长期持有，关注估值
 ```
 
 ---
@@ -414,13 +438,25 @@ tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
 
 ## 🔗 相关文件
 
-- `templates/moat-analysis-template.md` - 护城河分析模板
-- `examples/analysis-examples.md` - 完整分析示例集
-- `references/moat-theory.md` - 护城河理论参考
+- `../SKILL.md` - 投资框架主技能
+- `../references/buffett-moat.md` - 巴菲特护城河理论详解
+- `../examples/tech-company.md` - 科技公司护城河分析示例
+- `../examples/consumer-company.md` - 消费公司护城河分析示例
+- `../templates/moat-analysis-template.md` - 护城河分析模板
 
 ---
 
 ## 更新日志
+
+---
+
+## 🔧 故障排查
+
+| 问题 | 检查项 |
+|------|--------|
+| 不触发 | description 是否包含触发词？ |
+| 运行失败 | 脚本有执行权限吗？(`chmod +x`) |
+| 用错技能 | 多个技能 description 是否太相似？ |
 
 - v2.0.0 (2026-03-19): 按照 SKILL-STANDARD-v2.md 重构，添加 Front Matter、坑点章节、相关资源 🏰
 - v1.0.0 (2026-03-13): 初始版本，护城河评估师上线 🏰
@@ -428,15 +464,48 @@ tags: [护城河，竞争优势，价值投资，巴菲特，市场经济专利]
 ---
 
 *护城河是结构性优势，不是短期优势。真正的护城河必须能持续 10 年以上。* 🏰
+
 ---
 
-## 🔧 故障排查
+## 📐 标准化输出 Schema ⭐⭐⭐⭐⭐
 
-| 问题 | 检查项 | 解决方案 |
-|------|--------|---------|
-| 不触发 | description 是否包含触发词？ | 将关键词加入 description |
-| 运行失败 | 脚本有执行权限吗？ | `chmod +x scripts/*.py` |
-| 数据获取失败 | 网络连接正常吗？ | 检查网络或 API 状态 |
-| 数据不足 | Tushare 积分足够吗？ | 签到获取更多积分或使用免费数据源 |
-| 输出异常 | 输入格式正确吗？ | 检查股票代码格式（如 600519.SH） |
+**遵循**：`../OUTPUT_SCHEMA.md` - 投资框架标准化输出规范
+
+### 核心 Schema
+
+```json
+{
+  "signal": {
+    "summary": "护城河评估结论（≤50 字）",
+    "recommendation": "强烈推荐 | 推荐 | 观察 | 谨慎 | 避免",
+    "score": 0-100,
+    "moat_level": "强 | 中 | 弱 | 无"
+  },
+  "confidence": { "score": 0-100, "level": "低 | 中 | 高", "data_quality": "数据质量说明" },
+  "reasoning": {
+    "key_findings": ["护城河类型 + 强度", "趋势判断"],
+    "moat_types": { "brand": {}, "network_effect": {}, "switching_cost": {}, "scale_advantage": {}, "franchise": {} }
+  },
+  "metrics": { "moat_score": { "total": 0-25, "max": 25 }, "moat_types": {} },
+  "sources": [{ "name": "数据源", "type": "官方 | 媒体 | 第三方", "reliability": "S|A|B|C" }],
+  "action_items": [{ "priority": "高 | 中 | 低", "action": "行动", "timeline": "时间", "success_criteria": "标准" }],
+  "disclaimer": "⚠️ 市场有风险，投资需谨慎。",
+  "metadata": { "skill_name": "moat-evaluator", "skill_version": "4.0.0" }
+}
+```
+
+**完整模板**：详见 `../SCHEMA_TEMPLATES.md`
+
+### 变更日志
+
+#### v4.0.0 (2026-04-07) - Schema 标准化
+
+**新增：**
+- ✅ 完整标准化输出 Schema
+- ✅ 符合 OUTPUT_SCHEMA.md v1.0.0
+
+**合规性：**
+- ✅ 核心技能 🔴 标准（100% 合规）
+
+---
 

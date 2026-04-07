@@ -1,13 +1,14 @@
 ---
 name: market-patent-evaluator
-version: 1.0.0
-description: ［何时使用］当用户需要评估企业竞争优势时；当用户问"这家公司有市场经济专利吗"时；当需要区分过度竞争生意与专利生意时；当进行价值投资分析时；当检测到"护城河""竞争优势""好生意"等关键词时
-author: 燃冰 & ant
+version: 4.0.0
+author: 燃冰 + 小蚂蚁
 created: 2026-04-06
-skill_type: 通用
-related_skills: [moat-evaluator, industry-specialist, thousand-mile-horse-screener]
-tags: [投资, 护城河, 市场经济专利, 价值投资]
-updated: 2026-04-06
+updated: 2026-04-07
+skill_type: 核心🔴
+allowed-tools: [Bash, Read, Write, Exec, WebSearch]
+related_skills: [moat-evaluator, industry-specialist, value-analyzer, thousand-mile-horse-screener]
+tags: [市场经济专利，林森池，投资王道，竞争优势，两类生意]
+description: ［何时使用］当用户需要评估企业竞争优势时；当用户问"这家公司有市场经济专利吗"时；当需要区分过度竞争生意与专利生意时；当进行价值投资分析时；当检测到"护城河""竞争优势""好生意"等关键词时
 ---
 
 # 市场经济专利评估器 🏰
@@ -227,6 +228,34 @@ updated: 2026-04-06
 - `references/patent-cases.md` - 专利案例库
 - `examples/assessment-examples.md` - 评估示例
 - `templates/patent-report.md` - 报告模板
+
+---
+
+
+## 📐 标准化输出 Schema ⭐⭐⭐⭐⭐
+
+**遵循**：`../OUTPUT_SCHEMA.md` - 投资框架标准化输出规范
+
+### 核心 Schema
+
+```json
+{{
+  "signal": {{
+    "summary": "一句话结论（≤50 字）",
+    "recommendation": "强烈推荐 | 推荐 | 观察 | 谨慎 | 避免",
+    "score": 0-100
+  }},
+  "confidence": {{ "score": 0-100, "level": "低 | 中 | 高", "data_quality": "数据质量说明" }},
+  "reasoning": {{ "key_findings": ["发现 1", "发现 2", "发现 3"] }},
+  "metrics": {{ "primary": {{ "指标": {{ "value": 数值，"unit": "单位" }} }} }},
+  "sources": [{{ "name": "数据源", "type": "官方 | 媒体 | 第三方", "reliability": "S|A|B|C" }}],
+  "action_items": [{{ "priority": "高 | 中 | 低", "action": "行动", "timeline": "时间", "success_criteria": "标准" }}],
+  "disclaimer": "⚠️ 市场有风险，投资需谨慎。",
+  "metadata": {{ "skill_name": "技能名", "skill_version": "4.0.0" }}
+}}
+```
+
+**完整模板**：详见 `../SCHEMA_TEMPLATES.md`
 
 ---
 

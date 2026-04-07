@@ -1,13 +1,14 @@
 ---
 name: industry-specialist
-version: 1.0.0
-description: ［何时使用］当用户需要分析特定行业时；当用户问"这个行业值得投资吗"时；当需要行业专用指标时；当进行行业对比或配置时；当检测到"行业分析""行业对比""XX 行业怎么样"等关键词时
-author: 燃冰 & ant
+version: 4.0.0
+author: 燃冰 + 小蚂蚁
 created: 2026-04-06
-skill_type: 通用
-related_skills: [market-patent-evaluator, thousand-mile-horse-screener, value-analyzer]
-tags: [投资，行业分析，行业指标，价值投资]
-updated: 2026-04-06
+updated: 2026-04-07
+skill_type: 核心🔴
+allowed-tools: [Bash, Read, Write, Exec, WebSearch]
+related_skills: [market-patent-evaluator, thousand-mile-horse-screener, value-analyzer, future-forecaster]
+tags: [行业分析，特解指标，电力，银行，石油，电讯，保险，公路]
+description: ［何时使用］当用户需要分析特定行业时；当用户问"这个行业值得投资吗"时；当需要行业专用指标时；当进行行业对比或配置时；当检测到"行业分析""行业对比""XX 行业怎么样"等关键词时
 ---
 
 # 行业分析专家 🏭
@@ -296,6 +297,34 @@ updated: 2026-04-06
 - `references/industry-cases.md` - 行业案例库
 - `examples/industry-analysis-examples.md` - 分析示例
 - `templates/industry-report.md` - 报告模板
+
+---
+
+
+## 📐 标准化输出 Schema ⭐⭐⭐⭐⭐
+
+**遵循**：`../OUTPUT_SCHEMA.md` - 投资框架标准化输出规范
+
+### 核心 Schema
+
+```json
+{{
+  "signal": {{
+    "summary": "一句话结论（≤50 字）",
+    "recommendation": "强烈推荐 | 推荐 | 观察 | 谨慎 | 避免",
+    "score": 0-100
+  }},
+  "confidence": {{ "score": 0-100, "level": "低 | 中 | 高", "data_quality": "数据质量说明" }},
+  "reasoning": {{ "key_findings": ["发现 1", "发现 2", "发现 3"] }},
+  "metrics": {{ "primary": {{ "指标": {{ "value": 数值，"unit": "单位" }} }} }},
+  "sources": [{{ "name": "数据源", "type": "官方 | 媒体 | 第三方", "reliability": "S|A|B|C" }}],
+  "action_items": [{{ "priority": "高 | 中 | 低", "action": "行动", "timeline": "时间", "success_criteria": "标准" }}],
+  "disclaimer": "⚠️ 市场有风险，投资需谨慎。",
+  "metadata": {{ "skill_name": "技能名", "skill_version": "4.0.0" }}
+}}
+```
+
+**完整模板**：详见 `../SCHEMA_TEMPLATES.md`
 
 ---
 
