@@ -191,13 +191,26 @@ class DataFetcher:
     def _get_cached(self, key: str) -> Optional[Any]:
         """从缓存获取"""
         if self.cache:
-            return self.cache.get(key)
+            cached = self.cache.get(key)
+            if cached and isinstance(cached, dict):
+                # 根据 key 前缀重建正确的 dataclass
+                if key.startswith("index:"):
+                    return IndexData(**cached)
+                elif key.startswith("quote:"):
+                    return Quote(**cached)
+                elif key.startswith("financials:"):
+                    return Financials(**cached)
+            return cached
         return None
     
     def _set_cache(self, key: str, value: Any):
         """设置缓存"""
         if self.cache:
-            self.cache.set(key, value)
+            # 将 dataclass 转为 dict 再序列化
+            if hasattr(value, '__dataclass_fields__'):
+                self.cache.set(key, value.__dict__)
+            else:
+                self.cache.set(key, value)
     
     def get_quote(self, symbol: str, use_cache: bool = True) -> Quote:
         """

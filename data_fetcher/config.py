@@ -97,7 +97,7 @@ def save_config(config: Dict[str, Any], config_path: Optional[str] = None):
     config_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(config_path, 'w', encoding='utf-8') as f:
-        yaml.dump(config, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        yaml.dump(config, f, default_flow_style=False, allow_unicode=True)
 
 
 def _deep_merge(base: Dict, overlay: Dict) -> Dict:

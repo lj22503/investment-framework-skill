@@ -58,7 +58,10 @@ class CacheManager:
                     self._memory_cache[key] = (entry['value'], entry['expire'])
                     return entry['value']
                 else:
-                    cache_file.unlink(missing_ok=True)
+                    try:
+                        cache_file.unlink()
+                    except FileNotFoundError:
+                        pass
             except (json.JSONDecodeError, KeyError, IOError):
                 pass
         
@@ -92,14 +95,20 @@ class CacheManager:
             del self._memory_cache[key]
         
         cache_file = self.cache_dir / f"{self._make_key(key)}.json"
-        cache_file.unlink(missing_ok=True)
+        try:
+            cache_file.unlink()
+        except FileNotFoundError:
+            pass
     
     def clear(self):
         """清空所有缓存"""
         self._memory_cache.clear()
         
         for cache_file in self.cache_dir.glob("*.json"):
-            cache_file.unlink(missing_ok=True)
+            try:
+                cache_file.unlink()
+            except FileNotFoundError:
+                pass
     
     def get_stats(self) -> Dict[str, Any]:
         """获取缓存统计"""

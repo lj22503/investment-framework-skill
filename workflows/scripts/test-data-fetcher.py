@@ -41,8 +41,8 @@ def test_tencent():
     
     # 测试指数
     print("\n测试大盘指数：")
-    indices = ['000001.SH', '399001.SZ', '399006.SZ']
-    quotes = fetcher.get_indices(indices, use_cache=False)
+    indices = ['s_sh000001', 's_sz399001', 's_sz399006']
+    quotes = fetcher.get_indices(indices)
     
     for quote in quotes:
         print(f"✅ {quote.symbol}: {quote.price} ({quote.change_percent}%)")
@@ -100,11 +100,13 @@ def test_eastmoney():
     # 测试财报
     try:
         financials = fetcher.get_financials(symbol, use_cache=False)
-        print(f"\n✅ 财报数据（{financials.report_date}）：")
-        print(f"   每股收益：{financials.eps}元")
+        print(f"\n✅ 财报数据（{financials.timestamp}）：")
+        print(f"   营业收入：{financials.revenue}亿元")
+        print(f"   净利润：{financials.net_profit}亿元")
         print(f"   ROE: {financials.roe}%")
         print(f"   资产负债率：{financials.debt_ratio}%")
         print(f"   毛利率：{financials.gross_margin}%")
+        print(f"   净利率：{financials.net_margin}%")
     except DataFetchError as e:
         print(f"❌ 财报获取失败：{e}")
 
@@ -137,8 +139,7 @@ def test_cache():
     
     # 缓存统计
     stats = fetcher.get_cache_stats()
-    print(f"\n📊 缓存统计：")
-    print(f"   内存缓存：{stats['memory']['valid']} 条有效")
+    print(f"\n📊 缓存统计：{stats}")
 
 
 def main():
