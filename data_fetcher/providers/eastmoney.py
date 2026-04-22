@@ -74,34 +74,14 @@ def fetch_eastmoney_quote(symbol: str, timeout: int = 10) -> Dict[str, Any]:
         
         d = data['data']
         
-        # 东方财富的价格字段需要除以 100
-        price = d.get('f43', 0)
-        if price:
-            price = price / 100.0
-        
-        high = d.get('f46', 0)
-        if high:
-            high = high / 100.0
-        
-        low = d.get('f49', 0)
-        if low:
-            low = low / 100.0
-        
-        open_price = d.get('f50', 0)
-        if open_price:
-            open_price = open_price / 100.0
-        
-        prev_close = d.get('f51', 0)
-        if prev_close:
-            prev_close = prev_close / 100.0
-        
-        change = d.get('f44', 0)
-        if change:
-            change = change / 100.0
-        
-        change_percent = d.get('f45', 0)
-        if change_percent:
-            change_percent = change_percent / 100.0
+        # 东方财富返回直接可用，不需要除以100
+        price = d.get('f43', 0.0)
+        high = d.get('f46', 0.0)
+        low = d.get('f49', 0.0)
+        open_price = d.get('f50', 0.0)
+        prev_close = d.get('f51', 0.0)
+        change = d.get('f44', 0.0)
+        change_percent = d.get('f45', 0.0)
         
         return {
             'symbol': symbol,
