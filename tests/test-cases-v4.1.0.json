@@ -1,0 +1,249 @@
+{
+  "test_suite": "investment-framework v4.1.0 DAIR-AI 框架优化验证",
+  "created": "2026-05-29",
+  "version": "4.1.0",
+  "total_cases": 25,
+  "categories": {
+    "个股分析": 10,
+    "趋势分析": 5,
+    "资产配置": 5,
+    "决策检查": 3,
+    "边界情况": 2
+  },
+  "test_cases": [
+    {
+      "id": "TC001",
+      "category": "个股分析",
+      "input": "分析贵州茅台是否值得投资",
+      "expected_skills": ["value-analyzer", "moat-evaluator", "intrinsic-value-calculator", "decision-checklist"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation", "confidence", "key_risks", "action_items"]
+    },
+    {
+      "id": "TC002",
+      "category": "个股分析",
+      "input": "腾讯控股 0700.HK 现在可以买入吗",
+      "expected_skills": ["value-analyzer", "moat-evaluator", "intrinsic-value-calculator"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation", "confidence"]
+    },
+    {
+      "id": "TC003",
+      "category": "个股分析",
+      "input": "分析一下宁德时代的护城河",
+      "expected_skills": ["moat-evaluator", "industry-specialist"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result"]
+    },
+    {
+      "id": "TC004",
+      "category": "个股分析",
+      "input": "招商银行 vs 工商银行，哪个更值得投资",
+      "expected_skills": ["value-analyzer", "moat-evaluator", "intrinsic-value-calculator"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation"]
+    },
+    {
+      "id": "TC005",
+      "category": "个股分析",
+      "input": "比亚迪的内在价值是多少",
+      "expected_skills": ["intrinsic-value-calculator", "value-analyzer"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result"]
+    },
+    {
+      "id": "TC006",
+      "category": "个股分析",
+      "input": "分析一只白酒股，要求安全边际>30%",
+      "expected_skills": ["value-analyzer", "intrinsic-value-calculator", "thousand-mile-horse-screener"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation", "confidence"]
+    },
+    {
+      "id": "TC007",
+      "category": "个股分析",
+      "input": "药明康德现在能抄底吗",
+      "expected_skills": ["value-analyzer", "moat-evaluator", "risk-assessor"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "key_risks"]
+    },
+    {
+      "id": "TC008",
+      "category": "个股分析",
+      "input": "分析一下长江电力的分红能力",
+      "expected_skills": ["value-analyzer", "industry-specialist"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result"]
+    },
+    {
+      "id": "TC009",
+      "category": "个股分析",
+      "input": "海天味业符合格雷厄姆防御型标准吗",
+      "expected_skills": ["value-analyzer", "decision-checklist"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result"]
+    },
+    {
+      "id": "TC010",
+      "category": "个股分析",
+      "input": "帮我检查一下我投资隆基绿能的逻辑是否正确",
+      "expected_skills": ["decision-checklist", "value-analyzer", "moat-evaluator"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation"]
+    },
+    {
+      "id": "TC011",
+      "category": "趋势分析",
+      "input": "AI 现在是趋势还是泡沫",
+      "expected_skills": ["future-forecaster", "moat-evaluator"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation", "confidence"]
+    },
+    {
+      "id": "TC012",
+      "category": "趋势分析",
+      "input": "新能源车行业还值得投资吗",
+      "expected_skills": ["future-forecaster", "industry-specialist", "moat-evaluator"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation"]
+    },
+    {
+      "id": "TC013",
+      "category": "趋势分析",
+      "input": "半导体是趋势还是周期",
+      "expected_skills": ["future-forecaster", "industry-specialist"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result"]
+    },
+    {
+      "id": "TC014",
+      "category": "趋势分析",
+      "input": "人形机器人现在能投资吗",
+      "expected_skills": ["future-forecaster", "moat-evaluator", "decision-checklist"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "key_risks"]
+    },
+    {
+      "id": "TC015",
+      "category": "趋势分析",
+      "input": "分析一下低空经济是不是炒作",
+      "expected_skills": ["future-forecaster", "sentiment-analyzer"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation"]
+    },
+    {
+      "id": "TC016",
+      "category": "资产配置",
+      "input": "我 35 岁，平衡型风险偏好，如何配置资产",
+      "expected_skills": ["asset-allocator", "decision-checklist"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result", "action_items"]
+    },
+    {
+      "id": "TC017",
+      "category": "资产配置",
+      "input": "我有 100 万，应该怎么投资",
+      "expected_skills": ["asset-allocator", "value-analyzer"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result"]
+    },
+    {
+      "id": "TC018",
+      "category": "资产配置",
+      "input": "25 岁，激进型，想 5 年内攒够首付",
+      "expected_skills": ["asset-allocator", "future-forecaster"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation"]
+    },
+    {
+      "id": "TC019",
+      "category": "资产配置",
+      "input": "50 岁，保守型，如何规划退休",
+      "expected_skills": ["asset-allocator", "risk-assessor"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "analysis_result"]
+    },
+    {
+      "id": "TC020",
+      "category": "资产配置",
+      "input": "现在应该增加股票仓位还是债券仓位",
+      "expected_skills": ["asset-allocator", "sentiment-analyzer", "risk-assessor"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation"]
+    },
+    {
+      "id": "TC021",
+      "category": "决策检查",
+      "input": "我想重仓 AI 板块，帮我检查逻辑",
+      "expected_skills": ["decision-checklist", "future-forecaster", "risk-assessor"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "key_risks"]
+    },
+    {
+      "id": "TC022",
+      "category": "决策检查",
+      "input": "我是否应该卖出所有股票持有现金",
+      "expected_skills": ["decision-checklist", "asset-allocator", "sentiment-analyzer"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "recommendation"]
+    },
+    {
+      "id": "TC023",
+      "category": "决策检查",
+      "input": "帮我检查这个投资想法：全仓买入纳斯达克 100ETF",
+      "expected_skills": ["decision-checklist", "asset-allocator", "risk-assessor"],
+      "expected_format": "JSON",
+      "required_fields": ["status", "request_type", "key_risks"]
+    },
+    {
+      "id": "TC024",
+      "category": "边界情况",
+      "input": "分析这家公司值得投资吗",
+      "expected_status": "error",
+      "expected_skills": [],
+      "expected_format": "JSON",
+      "required_fields": ["status", "missing_info", "action_items"],
+      "note": "信息不足，应返回 error 并列出缺失字段"
+    },
+    {
+      "id": "TC025",
+      "category": "边界情况",
+      "input": "哪只股票明天会涨",
+      "expected_status": "error",
+      "expected_skills": [],
+      "expected_format": "JSON",
+      "required_fields": ["status", "key_risks", "disclaimer"],
+      "note": "预测短期股价，应拒绝并解释原因"
+    }
+  ],
+  "evaluation_metrics": {
+    "format_pass_rate": {
+      "description": "JSON.parse 成功率",
+      "target": ">=95%",
+      "calculation": "成功解析的案例数 / 总案例数"
+    },
+    "field_completeness": {
+      "description": "必填字段填充率",
+      "target": "100%",
+      "calculation": "必填字段完整的案例数 / 总案例数"
+    },
+    "reasoning_coherence": {
+      "description": "推理连贯性（人工评估）",
+      "target": "无跳跃",
+      "calculation": "CoT 步骤逻辑通顺的案例数 / 总案例数"
+    },
+    "boundary_handling": {
+      "description": "边界情况正确处理率",
+      "target": "100%",
+      "calculation": "TC024+TC025 正确处理的案例数 / 2"
+    }
+  },
+  "execution_plan": {
+    "step_1": "运行所有测试用例，记录输出",
+    "step_2": "自动检查 JSON 格式通过率",
+    "step_3": "自动检查字段完整率",
+    "step_4": "人工评估推理连贯性",
+    "step_5": "记录失败案例，分析原因",
+    "step_6": "根据结果迭代优化提示词"
+  }
+}

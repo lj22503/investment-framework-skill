@@ -1,0 +1,186 @@
+{
+  "test_suite": "investment-framework v4.1.0 DAIR-AI 框架优化验证",
+  "version": "4.1.0",
+  "timestamp": "2026-05-29T08:27:09.737527",
+  "total_tokens": {
+    "input": 0,
+    "output": 0
+  },
+  "results": [
+    {
+      "id": "TC001",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC002",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC003",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC004",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC005",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC006",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC007",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC008",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC009",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC010",
+      "category": "个股分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC011",
+      "category": "趋势分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC012",
+      "category": "趋势分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC013",
+      "category": "趋势分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC014",
+      "category": "趋势分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC015",
+      "category": "趋势分析",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC016",
+      "category": "资产配置",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC017",
+      "category": "资产配置",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC018",
+      "category": "资产配置",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC019",
+      "category": "资产配置",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC020",
+      "category": "资产配置",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC021",
+      "category": "决策检查",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC022",
+      "category": "决策检查",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC023",
+      "category": "决策检查",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC024",
+      "category": "边界情况",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    },
+    {
+      "id": "TC025",
+      "category": "边界情况",
+      "status": "failed",
+      "error": "HTTP 401: {\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"",
+      "output": null
+    }
+  ]
+}
