@@ -2,10 +2,22 @@
 
 **一人 CEO 的投资决策系统**
 
+<p align="center">
+  <a href="#快速开始"><img src="https://img.shields.io/badge/6_Skill-投资决策-d6a52e?style=for-the-badge" alt="6 Skill"/></a>
+  <a href="https://github.com/lj22503/investment-framework-skill/blob/main/README_EN.md"><img src="https://img.shields.io/badge/English-README-blue?style=for-the-badge" alt="English README"/></a>
+  <a href="https://github.com/lj22503/investment-framework-skill/blob/main/llms.txt"><img src="https://img.shields.io/badge/llms.txt-AI_Ready-green?style=for-the-badge" alt="llms.txt"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="MIT License"/></a>
+  <a href="#4-个定期工作流"><img src="https://img.shields.io/badge/4_工作流-定期跟踪-purple?style=for-the-badge" alt="4 工作流"/></a>
+</p>
+
+<p align="center">
+  <strong>13 本投资经典 · 6 个核心模块 · 4 个定期工作流</strong>
+</p>
+
+<!-- TODO: 添加 ≤10 秒的演示 GIF，提升 50% 转化率（见 GitHub 增长策略报告） -->
+
 > **版本**: v3.0.0 | **作者**: 燃冰 + ant  
 > **核心理念**: 从事件出发，挖掘信号，用范蠡视角解读，辅助投资决策
-
----
 
 ## 解决什么问题？
 
