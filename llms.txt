@@ -1,0 +1,156 @@
+# llms.txt — Investment Framework Skill System
+
+## Project Overview
+
+`investment-framework-skill` is an AI-assisted investment decision system built on 13 investment classics (covering Buffett, Munger, Dalio, Soros, Howard Marks, Peter Lynch, etc.). It provides 6 core Skills (event analysis / fund analysis / asset allocation / cycle positioning / bias detection / China masters) and 4 periodic workflows (daily / weekly / monthly / quarterly).
+
+Mission: Turn a one-person CEO's investment decisions into a structured, repeatable, bias-aware pipeline.
+
+## Core Pages
+
+- [README](https://github.com/lj22503/investment-framework-skill/blob/main/README.md) — Full documentation (Chinese)
+- [README_EN](https://github.com/lj22503/investment-framework-skill/blob/main/README_EN.md) — English documentation
+- [skills/](skills/) — 6 core Skills
+
+## What it is
+
+**One-liner**: 6 Skills + 4 workflows that turn investing from "intuition" into a structured pipeline grounded in 13 classics.
+
+**Core value**:
+- Structure: every analysis follows collect → select → judge → analyze
+- Bias awareness: explicit bias-detection Skill
+- Cycle awareness: dedicated cycle positioning
+- Continuous tracking: 4 periodic workflows for daily/weekly/monthly/quarterly cadence
+
+**Target users**: Solo investors (one-person CEO), small investment teams, individual investors who want disciplined frameworks.
+
+## 6 Core Skills
+
+| Skill | Purpose |
+|---|---|
+| `fanli-analyzer` | Event analysis — 4-layer decomposition (collect/select/judge/analyze) |
+| `fund-analyzer-pro` | Fund deep analysis — holdings/performance/risk |
+| `asset-allocator` | Asset allocation — Merrill clock / risk parity / position advice |
+| `cycle-locator` | Cycle positioning — Kondratieff / real estate / inventory cycles |
+| `bias-detector` | Bias detection — loss aversion / herding / overconfidence |
+| `china-masters` | China masters — Buffett/Munger/Dalio applied to China context |
+
+## 4 Periodic Workflows
+
+| Workflow | Frequency | Output |
+|---|---|---|
+| Daily Market Scan | Trading day 09:00 | Position advice + risk alerts |
+| Weekly Industry Track | Mon 10:00 | Industry allocation advice |
+| Monthly Portfolio Review | End of month | Rebalance advice + diagnostic |
+| Quarterly Deep Research | Quarter start | Macro analysis + key industries |
+
+## 8 Data Sources
+
+| Source | Type | Use |
+|---|---|---|
+| QVeris API | Paid | Northbound flows / macro |
+| Eastmoney API | Free | Index / stock quotes |
+| Sina Finance API | Free | Real-time quotes |
+| HKEX Disclosure | Free | Northbound / Southbound |
+| NBS (National Bureau of Statistics) | Free | Macro economic data |
+| PBOC Official | Free | Monetary policy |
+| Qiemai MCP | Paid | Market-wide advisory strategies |
+| Tiantian Fund API | Paid | Fund NAV / holdings |
+
+## Installation
+
+```bash
+clawhub install fanli-analyzer
+clawhub install fund-analyzer-pro
+clawhub install asset-allocator
+clawhub install cycle-locator
+clawhub install bias-detector
+clawhub install china-masters
+```
+
+## Invocation Examples
+
+### Event analysis (Fan-Li system)
+
+```
+User: Analyze this event: PBOC announces 0.5% RRR cut
+→ fanli-analyzer
+→ 4-layer output: collect signals → filter noise → judge direction → actionable advice
+```
+
+### Fund analysis
+
+```
+User: Analyze E Fund Blue Chip Selected
+→ fund-analyzer-pro
+→ Output: holdings / performance attribution / risk metrics / benchmark comparison
+```
+
+### Asset allocation
+
+```
+User: Help me allocate 1M RMB with medium risk preference
+→ asset-allocator
+→ Output: Merrill-clock position / risk parity split / recommended funds
+```
+
+### Cycle positioning
+
+```
+User: What cycle are we in right now?
+→ cycle-locator
+→ Output: Kondratieff position / real estate cycle / inventory cycle / implied sector tilts
+```
+
+### Bias detection
+
+```
+User: Is my decision right? I'm thinking of going all-in on new energy
+→ bias-detector
+→ Output: identifies loss aversion / herding / overconfidence; reframes decision
+```
+
+### China masters view
+
+```
+User: How would Buffett see this opportunity?
+→ china-masters
+→ Output: Buffett-style / Munger-style / Dalio-style perspectives applied to China context
+```
+
+## Trigger Word Mapping
+
+| User Says | Invokes Skill |
+|---|---|
+| "Analyze XX event", "What's your view" | `fanli-analyzer` |
+| "RRR cut", "Oil price up", "This data" | `fanli-analyzer` |
+| "Analyze this fund", "How's this fund" | `fund-analyzer-pro` |
+| "Compare these X funds / strategies" | `fund-analyzer-pro` |
+| "Help me allocate XX M", "How to distribute" | `asset-allocator` |
+| "Current position size", "Add or reduce" | `asset-allocator` |
+| "What cycle", "Kondratieff", "Inflection" | `cycle-locator` |
+| "Recession allocation", "Recovery buys" | `cycle-locator` |
+| "Is my decision right", "Any biases" | `bias-detector` |
+| "All-in", "Leverage" | `bias-detector` |
+| "Buffett's view", "How would Munger see" | `china-masters` |
+| "How to do value investing" | `china-masters` |
+
+## 13 Investment Classics (Foundations)
+
+Buffett, Munger, Dalio, Soros, Howard Marks, Peter Lynch, John Templeton, Joel Greenblatt, Pat Dorsey, Bruce Greenwald, Seth Klarman, François Valeur, Aswath Damodaran.
+
+## Quality Standards
+
+- Structured pipeline (no skipped steps)
+- Bias-aware (explicit bias-detection Skill)
+- Cycle-aware (dedicated cycle positioning Skill)
+- Data-source-aware (8 sources: 6 free + 2 paid)
+- Disclaimer-first (does NOT provide specific buy/sell recommendations)
+
+## Search Keywords
+
+investment framework, value investing, asset allocation, cycle analysis, Kondratieff cycle, fund analysis, behavioral finance, bias detection, Buffett, Munger, Dalio, AI investment advisor, FinAI, RAG, MCP, agent skill, one-person CEO.
+
+## Contact
+
+GitHub Issues: https://github.com/lj22503/investment-framework-skill/issues
